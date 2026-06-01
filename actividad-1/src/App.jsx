@@ -4,6 +4,8 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import ProductCard from './components/ProductCard'
+import Navbar from './components/Navbar'
+import FilterBar from './components/FilterBar'
 
 const productos = [
   {id: 1, nombre: 'Audifonos Gamer RGB', precio: 19990, imagen: null, stock: true},
@@ -18,15 +20,20 @@ const productos = [
 function App() {
   return (
     <div className="App">
-      {productos.map(producto => (
-        <ProductCard
-          key={producto.id}
-          nombre={producto.nombre}
-          precio={producto.precio}
-          imagen={producto.imagen}
-          stock={producto.stock}
-        />
-      ))}
+      <Navbar />
+      <FilterBar />
+
+      <main className="product-grid">
+        {productos.map(producto => (
+          <ProductCard
+            key={producto.id}
+            nombre={producto.nombre}
+            precio={producto.precio}
+            imagen={producto.imagen}
+            stock={producto.stock}
+          />
+        ))}
+      </main>
     </div>
   )
 }
