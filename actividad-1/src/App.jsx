@@ -18,19 +18,29 @@ const productos = [
 
 
 function App() {
+  const [soloConStock, setSoloConStock] = useState(false);
+  const productosFiltrados = soloConStock ? productos.filter((p) => p.stock): productos;
+
+  const [contador, setContador] = useState(0);
+
+  const agregarAlCarrito = () => setContador((prev) => prev + 1);
+  const quitarDelCarrito = () => setContador((prev) => prev > 0 ? prev - 1: 0);
+
   return (
     <div className="App">
-      <Navbar />
-      <FilterBar />
+      <Navbar cartCount={contador} />
+      <FilterBar soloConStock={soloConStock} onChange={setSoloConStock} />
 
       <main className="product-grid">
-        {productos.map(producto => (
+        {productosFiltrados.map(producto => (
           <ProductCard
             key={producto.id}
             nombre={producto.nombre}
             precio={producto.precio}
             imagen={producto.imagen}
             stock={producto.stock}
+            onAgregar={agregarAlCarrito}
+            onQuitar={quitarDelCarrito}
           />
         ))}
       </main>

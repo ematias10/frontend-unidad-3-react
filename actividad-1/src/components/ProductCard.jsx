@@ -1,5 +1,5 @@
 
-const ProductCard = ({ nombre, precio, imagen, stock }) => {
+const ProductCard = ({ nombre, precio, imagen, stock, onAgregar, onQuitar }) => {
     const claseArticulo = `card ${stock ? '' : 'sin-stock'}`;
     const precioFormateado = precio.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
 
@@ -16,8 +16,8 @@ const ProductCard = ({ nombre, precio, imagen, stock }) => {
                 <div className="card-actions">
                     {stock ? (
                         <>
-                            <button className="btn btn-add">Agregar</button>
-                            <button className="btn btn-remove">Quitar</button>
+                            <button className="btn btn-add" onClick={onAgregar}>Agregar</button>
+                            <button className="btn btn-remove" onClick={onQuitar}>Quitar</button>
                         </>
                     ) : (
                         <span className="badge-agotado-texto">Temporalmente agotado</span>

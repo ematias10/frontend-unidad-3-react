@@ -1,4 +1,4 @@
-const Navbar = ({}) => {
+const Navbar = ({cartCount}) => {
     return (
         <nav className="navbar">
             <div className="navbar-logo">TechStore</div>
@@ -8,7 +8,7 @@ const Navbar = ({}) => {
             <div className="navbar-cart">
                 <span className="cart-icon">🛒</span>
                 <span>Carrito</span>
-                <span className="cart-counter">0</span>
+                <span className="cart-counter">{cartCount}</span>
             </div>
         </nav>
 

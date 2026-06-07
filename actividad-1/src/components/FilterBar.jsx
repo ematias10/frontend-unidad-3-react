@@ -1,10 +1,11 @@
-const FilterBar = ({}) => {
+const FilterBar = ({ soloConStock, onChange }) => {
     return(
         <section className="filter-bar">
             <label className="filter-label">
                 <input 
                     type="checkbox"
-                    checked={false}
+                    checked={soloConStock}
+                    onChange={(e) => onChange(e.target.checked)}
                 />
                 Mostrar solo productos con stock disponible
             </label>
